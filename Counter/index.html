@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+<body>
+    <head>
+        <h1 style="position: absolute;text-align: center;top: 20%;left: 46%;font-size: 50px;">Counter</h1>
+    </head>
+    <section>
+        <div id="counterWindow" style="position: absolute;top: 40%;left:48%;border:5px solid black; height:100px;width: 100px;background-color: rgb(255, 245, 245);">
+            <p style="position:relative;text-align: center;font-weight: bold;font-size: 50px;margin: 22px;" id="counterValue">0</p>
+        </div>
+    </section>
+    <section style="position: absolute;top: 60%;left:42%">
+        <button id="counterIncBtn" style="margin:20px;font-size:24px; font-weight: bold;border-radius: 10px;background-color: lightgreen;" onclick="counterInc(255,143,143)">Counter ++</button>
+        <button id="counterDecBtn" style="margin:20px;font-size:24px; font-weight: bold;border-radius: 10px;background-color: lightcoral;" onclick="counterDec()">Counter --</button>
+    </section>
+    <script>
+        var r=255,g=255,b=255;
+        let count = 0;
+        let counter = document.getElementById("counterValue");
+        let counterWindow = document.getElementById("counterWindow");
+        function counterInc() {
+            g-=10;
+            b-=10;
+            if(count<=0){
+                counterWindow.style.display="block";
+            }
+            counter.innerText = ++count;
+            if(g!=0&&b!=0){
+               // debugger;
+                counterWindow.style.backgroundColor = "rgb("+r+","+g+","+b+")";
+            }
+            if(g<=80&&b<=80)
+                counter.style.color="white";
+
+        }
+        function counterDec(){
+            if(count>=0){
+                g+=10;
+                b+=10;
+                counter.innerText = --count;
+                if(g>=0 && b >=0)
+                    counterWindow.style.backgroundColor = "rgb("+r+","+g+","+b+")";
+                if(counter.style.color == "white" && g>80 && b>80)
+                    counter.style.color = "black";
+            }
+            if(count<0){
+                counterWindow.style.display = "none";
+            }
+
+        }
+    </script>
+</body>
+</html>
